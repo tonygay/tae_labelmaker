@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', ['as' => 'root', 'uses' => 'LabelsController@create']);
 Route::get('/home', ['as' => 'home', 'uses' => 'LabelsController@create']);
 
 Route::get('/label', ['as' => 'labels.show', 'uses' => 'LabelsController@show']);
