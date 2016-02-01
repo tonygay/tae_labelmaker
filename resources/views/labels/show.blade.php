@@ -76,6 +76,7 @@
 				clear: both;
 				padding-top: 15px;
 				padding-left: 70px;
+				font-weight: bold;
 			}
 			
 			.date {
