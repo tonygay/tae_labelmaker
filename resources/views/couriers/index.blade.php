@@ -35,7 +35,7 @@
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
 								{!! Form::button(
-										'<i class="glyphicon glyphicon-refresh"></i>',
+										'<i class="glyphicon glyphicon-eye-open"></i>',
 										[
 											'type' => 'submit',
 											'class' => 'btn btn-success btn-xs',
@@ -50,11 +50,11 @@
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
 								{!! Form::button(
-										'<i class="glyphicon glyphicon-trash"></i>',
+										'<i class="glyphicon glyphicon-eye-close"></i>',
 										[
 											'type' => 'submit',
 											'class' => 'btn btn-danger btn-xs',
-											'title' => 'Delete this courier.'
+											'title' => 'Disable this courier.'
 										]
 								) !!}
 							{!! Form::close() !!}

@@ -44,7 +44,7 @@ class CourierTableSeeder extends Seeder {
 		
 		$prefs['code2'] = null;
 		$prefs['code3'] = null;
-		$prefs['additional_label_field'] = 'MALA HUB CODE: :hub';
+		$prefs['additional_label_field'] = 'MALA HUB CODE:&nbsp;&nbsp;&nbsp;:hub';
 		
         Courier::create(array(
 			'name' => 'MALA',
