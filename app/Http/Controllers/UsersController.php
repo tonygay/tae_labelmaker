@@ -27,7 +27,16 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index', ['users' => User::with('institution')->get()]);
+		// Kind of a complex query just so we can sort by institution name.
+		$users = User::leftJoin('institutions', function($j) {
+					$j->on('institutions.id', '=', 'users.institution_id');
+				})
+				->orderBy('institutions.name', 'asc')
+		   		->select('users.*')
+		   		->with('institution')
+				->get();
+
+        return view('users.index', ['users' => $users]);
     }
 
     /**
