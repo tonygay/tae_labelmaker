@@ -16,6 +16,7 @@
 		<thead>
 			<tr>
 				<th>Name</th>
+				<th>Institutions</th>
 				<th>Code</th>
 				<th>Additional Label Field</th>
 				<th>&nbsp;</th>
@@ -25,6 +26,7 @@
 			@foreach($couriers as $courier)
 				<tr class="{{ $courier->trashed() ? 'danger' : '' }}">
 					<td>{{ $courier->name }}</td>
+					<td>{{ $courier->institutions->count() }}</td>
 					<td>{{ $courier->code }}</td>
 					<td>{{ isset($courier->label_preferences_json->additional_label_field) ? $courier->label_preferences_json->additional_label_field : '&nbsp;' }}</td>
 					<td>

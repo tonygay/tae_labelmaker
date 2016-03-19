@@ -24,7 +24,7 @@ class CouriersController extends Controller
      */
     public function index()
     {
-        return view('couriers.index', ['couriers' => Courier::withTrashed()->get()]);
+        return view('couriers.index', ['couriers' => Courier::withTrashed()->with('institutions')->get()]);
     }
 
     /**
@@ -127,6 +127,19 @@ class CouriersController extends Controller
     public function restore($id)
     {
         Courier::withTrashed()->find($id)->restore();
+		return Redirect::route('couriers.index');
+    }
+	
+    /**
+     * Remove all institutions relations for the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function removeInstitutions($id)
+    {
+        $courier = Courier::withTrashed()->with('institutions')->find($id);
+		foreach ($courier->institutions as $institution) $institution->delete();
 		return Redirect::route('couriers.index');
     }
 }

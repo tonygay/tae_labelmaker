@@ -19,6 +19,7 @@ Route::get('/label', ['as' => 'labels.show', 'uses' => 'LabelsController@show'])
 Route::resource('users', 'UsersController');
 
 Route::post('couriers/restore/{id}', ['as' => 'couriers.restore', 'uses' => 'CouriersController@restore']);
+Route::delete('couriers/remove-institutions/{id}', ['as' => 'couriers.remove-institutions', 'uses' => 'CouriersController@removeInstitutions']);
 Route::resource('couriers', 'CouriersController');
 
 Route::post('institutions/index', ['as' => 'institutions.filtered-index', 'uses' => 'InstitutionsController@filteredIndex']);

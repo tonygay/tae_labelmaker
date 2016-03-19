@@ -96,5 +96,18 @@
 		</div>
 
 	{!! Form::close() !!}
+	
+	<hr>
+	
+	{!! Form::open(['route' => ['couriers.remove-institutions', $courier->id], 'method' => 'DELETE']) !!}
+		{!! Form::button(
+				'Clear Institutions',
+				[
+					'type' => 'submit',
+					'class' => 'btn btn-danger pull-right',
+					'title' => 'Remove all institutions associated with this courier.'
+				]
+		) !!}
+	{!! Form::close() !!}
 
 @stop
