@@ -82,7 +82,7 @@
 	<div class="form-group col-sm-11">
 		<h4>
 			How many of each label should be printed?<br>
-			<small>Labels print 4 per page</small>
+			<small>Labels print 4 per page (max 10 pages at a time)</small>
 		</h4>
 		<input type="text" name="label_count" value="1" class="col-sm-1">
 	</div>

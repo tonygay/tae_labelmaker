@@ -2,7 +2,7 @@
 
 namespace AmigosLabels\Http\Controllers;
 
-use DB, Input, PDF;
+use DB, Input, PDF, Redirect;
 use Illuminate\Http\Request;
 
 use AmigosLabels\Institution;
@@ -58,6 +58,10 @@ class LabelsController extends Controller
 		$data['to'] = Institution::with('courier')->whereIn('id', Input::get('to'))->get();
 		$data['date'] = Input::get('add_date', false) ? Input::get('shipping_date') : null;
 		$data['count'] = Input::get('label_count', 1);
+		
+		if ($data['to']->count() * $data['count'] > 40) {
+			return Redirect::back()->withErrors(['Cannot print more than 10 pages at a time. Decrease the number of labels per institution or the number of institutions.']);
+		}
 
 		// We want to build them 4 to a page so lets create the individual pages here
 		// with references to the "To" institutions
