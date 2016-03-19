@@ -36,8 +36,8 @@
 				overflow: auto;
 			}
 			
-			.from .from-label,
-			.to .to-label {
+			.from-label,
+			.courier-codes .to-label {
 				width: 70px;
 				font-weight: bold;
 			}
@@ -58,18 +58,22 @@
 				font-size: 18px;
 			}
 			
-			.courier-codes {
-				padding-top: 20px;
-				margin-left: 30px;
-				font-size: 45px;
-				font-weight: bold;
+			.courier-codes .to-label {
+				float: left;
+				padding: 6px 0;
+				line-height: 45px;
+				font-size: 18px;
 			}
 			
-			.courier-codes div {
+			.courier-codes {
+				padding-top: 20px;
+			}
+			
+			.courier-codes .code {
 				float: left;
 				margin-right: 20px;
-				padding: 6px;
-/*				border: 1px solid #444;*/
+				font-size: 45px;
+				font-weight: bold;
 			}
 			
 			.misc {
@@ -111,6 +115,7 @@
 							</div>
 							
 							<div class="courier-codes">
+								<div class="to-label">To:</div>
 								@if(!empty($data['to'][$page->labels[$i]]->prefs->code1))
 									<div class="code">
 										{{ $data['to'][$page->labels[$i]]->{$data['to'][$page->labels[$i]]->prefs->code1} }}
@@ -131,7 +136,7 @@
 							</div>
 							
 							<div class="to">
-								<div class="to-label">TO:</div>
+								<div class="from-label">&nbsp;</div>
 								<div class="to-content">
 									{{ $data['to'][$page->labels[$i]]->name }}<br>
 									@if($data['to'][$page->labels[$i]]->prefs->use_address1 && !empty($data['to'][$page->labels[$i]]->address1))
