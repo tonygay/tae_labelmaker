@@ -27,7 +27,7 @@ class InstitutionsController extends Controller
     public function index()
     {
         return view('institutions.index', [
-			'institutions' => Institution::with('courier')->get(),
+			'institutions' => Institution::with('courier')->orderBy('name')->get(),
 			'courier_id' => 0,
 			'couriers' => Courier::orderBy('name')->lists('name', 'id')
 		]);
@@ -41,7 +41,7 @@ class InstitutionsController extends Controller
 	public function filteredIndex()
 	{
 		$courier_id = Input::get('courier_id');
-		$query = Institution::with('courier')->where('courier_id', $courier_id);
+		$query = Institution::with('courier')->where('courier_id', $courier_id)->orderBy('name');
 		return view('institutions.index', [
 			'institutions' => $query->get(),
 			'courier_id' => $courier_id,
