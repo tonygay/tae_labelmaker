@@ -11,12 +11,16 @@
 				border: none;
 				page-break-inside: avoid;
 			}
+			
+			table.page tr {
+				margin-bottom: 20px;
+			}
 	
 			td.label { 
 				vertical-align: top;
 				padding: 10px;
 				width: 490px;
-				height: 315px;
+				height: 295px;
 				border: 1px solid #DDD;
 			}
 			
