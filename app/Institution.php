@@ -22,7 +22,7 @@ class Institution extends Model
 	}
 	
 	public function getDetailedIdentifierAttribute() {
-		return "[" . $this->courier->code . "] $this->name, $this->city, $this->state ($this->oclc)";
+		return "[" . $this->courier->code . " - " . $this->site_code . "] $this->name, $this->city, $this->state ($this->oclc)";
 	}
 	
 	public function getFullNameAttribute() {

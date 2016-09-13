@@ -40,7 +40,7 @@
 	<div class="form-group col-sm-11">
 		<h4>
 			Select the institution(s) that the package is being shipped to<br>
-			<small>Search for institutions by name, city or OCLC code<br>
+			<small>Search for institutions by name, city, location code, or OCLC code<br>
 			You can create multiple labels by selecting multiple To institutions.<br>
 			Remember that different regions might have institutions with similar names, check the city or the courier code to be sure you are selecting the correct one.</small>
 		</h4>
