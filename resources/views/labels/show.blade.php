@@ -49,11 +49,13 @@
 			.from .from-content {
 				width: 300px;
 				font-weight: bold;
+                font-size: 13px;
 			}
 
 			.to .to-content {
 				width: 400px;
 				font-weight: bold;
+                font-size: 16px;
 			}
 			
 			.from div,
