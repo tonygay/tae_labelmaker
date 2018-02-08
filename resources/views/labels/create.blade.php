@@ -3,7 +3,7 @@
 @section('content')
 	<h2>
 		Make Labels<br>
-		<small>Create shipping labels in 5 easy steps.</small>
+		<small>Create shipping labels in 6 easy steps.</small>
 	</h2>
 	<hr>
 	
@@ -81,15 +81,36 @@
 	<div class="col-sm-1"><h1>4</h1></div>
 	<div class="form-group col-sm-11">
 		<h4>
+			How many labels per page?<br>
+			<small>Print either 1 or 4 labels per page (max 10 pages total)</small>
+		</h4>
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="page_count" id="page_count4" value="4" checked>
+				4 labels per page
+		  </label>
+		</div>
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="page_count" id="page_count1" value="1">
+		    1 label per page
+		  </label>
+		</div>
+	</div>
+	
+	<hr class="col-sm-12">
+	
+	<div class="col-sm-1"><h1>5</h1></div>
+	<div class="form-group col-sm-11">
+		<h4>
 			How many of each label should be printed?<br>
-			<small>Labels print 4 per page (max 10 pages at a time)</small>
 		</h4>
 		<input type="text" name="label_count" value="1" class="col-sm-1">
 	</div>
 	
 	<hr class="col-sm-12">
 	
-	<div class="col-sm-1"><h1>5</h1></div>
+	<div class="col-sm-1"><h1>6</h1></div>
 	<div class="form-group col-sm-11">
 		<h4>
 			Show me the labels

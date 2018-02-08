@@ -43,6 +43,7 @@ class LabelsController extends Controller
 	        'add_date' => 'required',
 			'shipping_date' => 'required_if:add_date,1|date',
 	        'label_count' => 'required|integer',
+					'page_count' => 'required',
 	    ];
 		
 		$messages = [
@@ -58,6 +59,7 @@ class LabelsController extends Controller
 		$data['to'] = Institution::with('courier')->whereIn('id', Input::get('to'))->get();
 		$data['date'] = Input::get('add_date', false) ? Input::get('shipping_date') : null;
 		$data['count'] = Input::get('label_count', 1);
+		$data['page_count'] = Input::get('page_count', 4);
 		
 		if ($data['to']->count() * $data['count'] > 40) {
 			return Redirect::back()->withErrors(['Cannot print more than 10 pages at a time. Decrease the number of labels per institution or the number of institutions.']);
@@ -71,7 +73,7 @@ class LabelsController extends Controller
 			foreach($data['to'] as $index => $institution) {
 				$count = $i * count($data['to']) + $index;
 
-				if ($count % 4 == 0) {
+				if ($count % 4 == 0 || $data['page_count'] == 1) {
 					if (!is_null($page)) {
 						$pages[] = $page;
 					}
@@ -82,22 +84,26 @@ class LabelsController extends Controller
 			}
 		}
 
-		// If the last page was only partially full, fill it up with extra labels
-		$index = 0;
-		while(count($page->labels) < 4)  {
-			$page->labels[] = $index;
-			$index = ($index < count($data['to']) - 1) ? $index + 1 : 0; 
+		// If 4 per page and the last page is partially full, fill it with extra labels
+		if ($data['page_count'] != 1) {
+			$index = 0;
+			while(count($page->labels) < 4)  {
+				$page->labels[] = $index;
+				$index = ($index < count($data['to']) - 1) ? $index + 1 : 0; 
+			}
 		}
 		$pages[] = $page;
 
 		// Add pages to our data array
 		$data['pages'] = $pages;
 		
+		$view_name = $data['page_count'] == 1 ? 'labels.show-one' : 'labels.show-four';
+		
 		// Use for debugging purposes, it shows the labels in HTML
-		// return view('labels.show', ['data' => $data]);
+		// return view($view_name, ['data' => $data]);
 
 		// Finally, lets build the PDF from our view
-	    return PDF::loadView('labels.show', ['data' => $data])
+	    return PDF::loadView($view_name, ['data' => $data])
 	    					->setOrientation('landscape')
 	    					->stream('labels' . time() . '.pdf');
     }
