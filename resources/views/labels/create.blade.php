@@ -96,6 +96,12 @@
 		    1 label per page
 		  </label>
 		</div>
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="page_count" id="page_count1" value="2">
+		    1 label per page (small size: 3.25 in. x 4.5 in.)
+		  </label>
+		</div>
 	</div>
 	
 	<hr class="col-sm-12">
